@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+  <!-- based on https://github.com/jamiewilson/form-to-google-sheets/tree/master/demo -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+</head>
+<body>
+  
+  <h1>
+    LinkedIn for Democrats?
+  </h1>
+  <p>
+    Problem: Every two years national elections take place throughout the country but as American mobility has increased - with many people living in multiple cities and states throughout their lives - we do not have an accurate idea of what elections might particularly matter to or resonate with them. 
+  </p>
+  <p>
+    Solution: Build a LinkedIn for Democrats. Through a LinkedIn-like database, we (the Democratic Party) can better know who are people are and what (where) they care about! Not only would this be an unprecedented tool for activating our base and for fundraising, but we will also better match potential volunteers with tasks that meet their skill sets. We don’t want former Senate Communications Directors answering phones on Congressional campaigns and we don’t want CEOs on DCCC spam lists -- Let’s get organized and get better! 
+  </p>
+  <p>  
+    The Ask: Will you join us in Beta testing this new tool? If you’re interested, we ask that you fill out this simple form so that we can build a preliminary database. 
+  </p>
+  <p>
+    Disclaimer: You’re busy and important if, for security reasons, you’re concerned about sharing contact details, please leave those fields blank. We can instruct any users to contact you via LinkedIn direct message instead. 
+  </p>
+
+  
+  <form name="submit-to-google-sheet">
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="firstName" type="text" placeholder="First Name">
+    <input name="lastName" type="text" placeholder="Last Name">
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwIHAPyOQpA0R870TpN2_bXAEo2J0AexaIhuaf6Ql4Cwf89IfUj/exec'
+    const form = document.forms['submit-to-google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>

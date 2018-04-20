@@ -4,46 +4,56 @@
 <head>
   <!-- based on https://github.com/jamiewilson/form-to-google-sheets/tree/master/demo -->
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
   <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
   <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
 </head>
 <body>
-  
-  <h1>
-    LinkedIn for Democrats?
-  </h1>
-  <p>
-    Problem: Every two years national elections take place throughout the country but as American mobility has increased - with many people living in multiple cities and states throughout their lives - we do not have an accurate idea of what elections might particularly matter to or resonate with them. 
-  </p>
-  <p>
-    Solution: Build a LinkedIn for Democrats. Through a LinkedIn-like database, we (the Democratic Party) can better know who are people are and what (where) they care about! Not only would this be an unprecedented tool for activating our base and for fundraising, but we will also better match potential volunteers with tasks that meet their skill sets. We don’t want former Senate Communications Directors answering phones on Congressional campaigns and we don’t want CEOs on DCCC spam lists -- Let’s get organized and get better! 
-  </p>
-  <p>  
-    The Ask: Will you join us in Beta testing this new tool? If you’re interested, we ask that you fill out this simple form so that we can build a preliminary database. 
-  </p>
-  <p>
-    Disclaimer: You’re busy and important if, for security reasons, you’re concerned about sharing contact details, please leave those fields blank. We can instruct any users to contact you via LinkedIn direct message instead. 
-  </p>
+  <div class="container">
+    <h1>
+      LinkedIn for Democrats?
+    </h1>
+    <p>
+      Problem: Every two years national elections take place throughout the country but as American mobility has increased - with many people living in multiple cities and states throughout their lives - we do not have an accurate idea of what elections might particularly matter to or resonate with them. 
+    </p>
+    <p>
+      Solution: Build a LinkedIn for Democrats. Through a LinkedIn-like database, we (the Democratic Party) can better know who are people are and what (where) they care about! Not only would this be an unprecedented tool for activating our base and for fundraising, but we will also better match potential volunteers with tasks that meet their skill sets. We don’t want former Senate Communications Directors answering phones on Congressional campaigns and we don’t want CEOs on DCCC spam lists -- Let’s get organized and get better! 
+    </p>
+    <p>  
+      The Ask: Will you join us in Beta testing this new tool? If you’re interested, we ask that you fill out this simple form so that we can build a preliminary database. 
+    </p>
+    <p>
+      Disclaimer: You’re busy and important if, for security reasons, you’re concerned about sharing contact details, please leave those fields blank. We can instruct any users to contact you via LinkedIn direct message instead. 
+    </p>
 
   
-  <form name="submit-to-google-sheet">
-    <input name="firstName" type="text" placeholder="First Name">
-    <input name="lastName" type="text" placeholder="Last Name">
-    <input name="email" type="email" placeholder="Email" required>
-    <input name="phoneNumber" type="text" placeholder="Phone Number">
-    <input name="twitterUrl" type="text" placeholder="Twitter URL">
-    <input name="linkedinUrl" type="text" placeholder="Linkedin Profile URL">
-    <input name="city" type="text" placeholder="City">
-    <input name="state" type="text" placeholder="State">
-    <input name="currentEmployer" type="text" placeholder="Current Employer">
-    <input name="currentJobTitle" type="text" placeholder="Job Title">
-    <input name="interests" type="text" placeholder="What are you interested in helping out with?">
+    <form name="submit-to-google-sheet">
+      <div class="form-group">
+        <input name="firstName" type="text" placeholder="First Name">
+        <input name="lastName" type="text" placeholder="Last Name">
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="phoneNumber" type="text" placeholder="Phone Number">
+      </div>
+      <div class="form-group">
+        <input name="state" type="text" placeholder="State">
+        <input name="zip" type="text" placeholder="Zip">
+      </div>
+      <div class="form-group">
+        <input name="currentEmployer" type="text" placeholder="Current Employer">
+        <input name="currentJobTitle" type="text" placeholder="Job Title">
+      </div>
+      <div class="form-group">
 
-    <button type="submit">Send</button>
-  </form>
-
+        <input name="interests" type="text" placeholder="What are you interested in helping out with?">
+      </div>
+      <button type="submit">Send</button>
+    </form>
+  </div>
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwIHAPyOQpA0R870TpN2_bXAEo2J0AexaIhuaf6Ql4Cwf89IfUj/exec'
     const form = document.forms['submit-to-google-sheet']
@@ -54,6 +64,13 @@
         .then(response => console.log('Success!', response))
         .catch(error => console.error('Error!', error.message))
     })
+    
+    
   </script>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 </body>
 </html>
